@@ -1,11 +1,8 @@
-<div class="container mt-5">
-  <div class="mb-3">
-    <input type="file" class="form-control" (change)="onFileSelected($event)" />
-  </div>
-  <div class="mb-3">
-    <button class="btn btn-primary" (click)="onUpload()">Upload</button>
-  </div>
-  <div class="mb-3">
-    <textarea class="form-control" rows="10" [value]="extractedText" readonly></textarea>
+<div>
+  <input type="file" (change)="onFileSelected($event)" />
+  <button (click)="onUpload()">Upload</button>
+  <div *ngIf="response">
+    <h3>Response from server:</h3>
+    <p>{{ response }}</p>
   </div>
 </div>
