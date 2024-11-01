@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { UploadService } from './image-upload/upload.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent {
   selectedFile: File | null = null;
   responseMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private uploadService: UploadService) {}
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -18,10 +18,7 @@ export class AppComponent {
 
   onUpload() {
     if (this.selectedFile) {
-      const formData = new FormData();
-      formData.append('file', this.selectedFile, this.selectedFile.name);
-
-      this.http.post('http://localhost:5000/process-image', formData)
+      this.uploadService.uploadFile(this.selectedFile)
         .subscribe(
           (response: any) => {
             this.responseMessage = response.message || 'Upload successful!';
