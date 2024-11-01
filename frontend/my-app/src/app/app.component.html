@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload and Text Area</title>
+  <style>
+    /* Original CSS here (shortened for brevity) */
+    :host {
+      font-family: "Inter", sans-serif;
+      box-sizing: border-box;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 10px;
+      background: var(--gray-400);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .upload-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 5px;
+      background: white;
+    }
+    .upload-section input[type="file"] {
+      cursor: pointer;
+    }
+    .upload-section textarea {
+      width: 100%;
+      height: 100px;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid var(--gray-700);
+      border-radius: 5px;
+      resize: vertical;
+    }
+    .upload-section button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background: var(--bright-blue);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .upload-section button:hover {
+      background: var(--electric-violet);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Upload Image and Add Text</h1>
+    <div class="upload-section">
+      <input type="file" accept="image/*" id="imageUpload">
+      <textarea placeholder="Enter text here..." id="textInput"></textarea>
+      <button onclick="submitData()">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    function submitData() {
+      const imageFile = document.getElementById('imageUpload').files[0];
+      const text = document.getElementById('textInput').value;
+
+      if (imageFile && text) {
+        alert('Image and text have been submitted!');
+      } else {
+        alert('Please upload an image and enter text.');
+      }
+    }
+  </script>
+
+</body>
+</html>
