@@ -1,3 +1,6 @@
+import { Component } from '@angular/core';
+import { ImageUploadService } from './image-upload.service';
+
 export class ImageUploadComponent {
   selectedFile: File | null = null;
   response: string | null = null;
